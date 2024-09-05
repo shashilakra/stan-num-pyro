@@ -32,8 +32,8 @@ def get_element(dist):
     return dist.sample(PRNGKey(0))
 
 
-from jax.ops import index as ops_index
-from jax.ops import index_update as ops_index_update
+# from jax.ops import index as ops_index
+# from jax.ops import index_update as ops_index_update
 from jax.lax import cond as lax_cond
 from jax.lax import while_loop as lax_while_loop
 
