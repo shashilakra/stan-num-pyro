@@ -2408,7 +2408,11 @@ multiply_lower_tri_self_matrix = _XXX_TODO_XXX_("multiply_lower_tri_self")
 
 # matrix diag_pre_multiply(vector v, matrix m)
 # Return the product of the diagonal matrix formed from the vector v and the matrix m, i.e., diag_matrix(v) * m.
-diag_pre_multiply_vector_matrix = _XXX_TODO_XXX_("diag_pre_multiply")
+def diag_pre_multiply_vector_matrix(v , m):
+    product = jnp.diag(v) * m
+    return product
+
+#diag_pre_multiply_vector_matrix = _XXX_TODO_XXX_("diag_pre_multiply")
 
 # matrix diag_pre_multiply(row_vector rv, matrix m)
 # Return the product of the diagonal matrix formed from the vector rv and the matrix m, i.e., diag_matrix(rv) * m.
