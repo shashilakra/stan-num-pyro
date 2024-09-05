@@ -3433,3 +3433,26 @@ integrate_ode_bdf_function_array_int_array_array_array_array = _XXX_TODO_XXX_("i
 integrate_ode_bdf_function_array_real_array_array_array_array_real_real_int = _XXX_TODO_XXX_("integrate_ode_bdf")
 integrate_ode_bdf_function_array_int_array_array_array_array_real_real_int = _XXX_TODO_XXX_("integrate_ode_bdf")
 # XXX TODO: lifting to other types XXX
+
+
+############################### NEW FUNCS INCLUSION ##########################################
+# Author : Shashi Lakra
+
+def gp_exp_quad_cov_array_real_real(X, lengthscale, variance):
+    """
+    Computes the exponential quadratic (RBF) covariance matrix for a single set of inputs.
+
+    Args:
+    - X: Input array of shape (n, d) containing the set of inputs.
+    - lengthscale: Lengthscale parameter of the RBF kernel.
+    - variance: Variance parameter of the RBF kernel.
+
+    Returns:
+    - K: Covariance matrix of shape (n, n) computed using the exponential quadratic kernel.
+
+    general formula for rbf kernel function  to compute covariance b/w xi and xj
+    refer : https://mc-stan.org/docs/functions-reference/matrix_operations.html
+    """
+    dist_sq = jnp.sum((X[:, None] - X) ** 2, axis=-1)  # Squared Euclidean distance
+    K = variance * jnp.exp(-0.5 * dist_sq / lengthscale**2)
+    return K
