@@ -2,6 +2,7 @@ import math
 import jax
 import jax.numpy as tensor
 from jax.numpy import ones, array
+import jax.numpy as jnp
 
 dtype_float = tensor.dtype("float32")
 dtype_long = tensor.dtype("int32")
@@ -815,12 +816,13 @@ atanh_array = tatanh
 
 # R logit(T x)
 # log odds, or logit, function applied to x
+from jax.scipy.special import logit #Shashi modification
 logit_int = _XXX_TODO_XXX_("logit")
-logit_real = _XXX_TODO_XXX_("logit")
-logit_vector = _XXX_TODO_XXX_("logit")
+logit_real = logit                  #Shashi modification
+logit_vector = logit                  #Shashi modification
 logit_rowvector = _XXX_TODO_XXX_("logit")
 logit_matrix = _XXX_TODO_XXX_("logit")
-logit_array = _XXX_TODO_XXX_("logit")
+logit_array = logit   
 
 # R inv_logit(T x)
 # logistic sigmoid function applied to x
