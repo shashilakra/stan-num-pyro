@@ -1,8 +1,8 @@
 import numpyro as pyro
 import jax.numpy as tensor
 from numpyro.distributions import Exponential
-from pyro import module as register_network
-from pyro import random_module
+#from pyro import module as register_network
+#from pyro import random_module
 from jax.numpy import array
 from jax.numpy import zeros, ones, matmul, true_divide, floor_divide, transpose, empty
 from jax import jit, vmap

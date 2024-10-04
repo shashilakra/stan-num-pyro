@@ -3,7 +3,7 @@ import numpyro.distributions as d
 # import numpyro.contrib.tfp.distributions as dtfp
 from numpyro.distributions import constraints, transforms
 from numpyro.distributions.transforms import biject_to as transform
-from numpyro.distributions.constraints import Constraint
+from numpyro.distributions.constraints import Constraint, _LessThanEq
 from numpyro.distributions.transforms import (
     CorrCholeskyTransform,
     biject_to as transform,
@@ -135,16 +135,16 @@ class lower_constrained_improper_uniform(improper_uniform):
         return transform(self.support)(s)
 
 
-class _LessThanEq(Constraint):
-    """
-    Constrain to a real half line `[-inf, upper_bound]`.
-    """
+# class _LessThanEq(Constraint):
+#     """
+#     Constrain to a real half line `[-inf, upper_bound]`.
+#     """
 
-    def __init__(self, upper_bound):
-        self.upper_bound = upper_bound
+#     def __init__(self, upper_bound):
+#         self.upper_bound = upper_bound
 
-    def __call__(self, x):
-        return x <= self.upper_bound
+#     def __call__(self, x):
+#         return x <= self.upper_bound
 
 
 less_than_eq = _LessThanEq

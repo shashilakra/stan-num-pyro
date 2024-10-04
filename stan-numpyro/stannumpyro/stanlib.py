@@ -1045,12 +1045,13 @@ tgamma_array = _XXX_TODO_XXX_("tgamma")
 
 # R lgamma(T x)
 # natural logarithm of the gamma function applied to x,
-lgamma_int = _XXX_TODO_XXX_("lgamma")
-lgamma_real = _XXX_TODO_XXX_("lgamma")
-lgamma_vector = _XXX_TODO_XXX_("lgamma")
+from jax.lax import lgamma
+lgamma_int = lgamma
+lgamma_real = lgamma
+lgamma_vector = lgamma
 lgamma_rowvector = _XXX_TODO_XXX_("lgamma")
 lgamma_matrix = _XXX_TODO_XXX_("lgamma")
-lgamma_array = _XXX_TODO_XXX_("lgamma")
+lgamma_array = lgamma
 
 # R digamma(T x)
 # digamma function applied to x. The digamma function is the derivative of the natural logarithm of the Gamma function. The function is defined for positive numbers and non-integral negative numbers
