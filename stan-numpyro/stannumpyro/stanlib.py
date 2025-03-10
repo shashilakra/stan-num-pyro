@@ -513,12 +513,13 @@ sqrt_array = tsqrt
 
 # R cbrt(T x)
 # cube root of x
-cbrt_int = _XXX_TODO_XXX_("cbrt")
-cbrt_real = _XXX_TODO_XXX_("cbrt")
-cbrt_vector = _XXX_TODO_XXX_("cbrt")
-cbrt_rowvector = _XXX_TODO_XXX_("cbrt")
-cbrt_matrix = _XXX_TODO_XXX_("cbrt")
-cbrt_array = _XXX_TODO_XXX_("cbrt")
+from jax.numpy import cbrt as tcbrt
+cbrt_int = lambda x: array(tcbrt(x), dtype=dtype_float)
+cbrt_real = tcbrt
+cbrt_vector = tcbrt
+cbrt_rowvector = tcbrt
+cbrt_matrix = tcbrt
+cbrt_array = tcbrt
 
 # R square(T x)
 # square of x
@@ -545,12 +546,22 @@ exp_array = texp
 
 # R exp2(T x)
 # base-2 exponential of x
-exp2_int = _XXX_TODO_XXX_("exp2")
-exp2_real = _XXX_TODO_XXX_("exp2")
-exp2_vector = _XXX_TODO_XXX_("exp2")
-exp2_rowvector = _XXX_TODO_XXX_("exp2")
-exp2_matrix = _XXX_TODO_XXX_("exp2")
-exp2_array = _XXX_TODO_XXX_("exp2")
+# exp2_int = _XXX_TODO_XXX_("exp2")
+# exp2_real = _XXX_TODO_XXX_("exp2")
+# exp2_vector = _XXX_TODO_XXX_("exp2")
+# exp2_rowvector = _XXX_TODO_XXX_("exp2")
+# exp2_matrix = _XXX_TODO_XXX_("exp2")
+# exp2_array = _XXX_TODO_XXX_("exp2")
+
+from math import exp2 as mexp2
+from jax.numpy import exp2 as texp2
+exp2_int = lambda x: array(mexp2(x), dtype=dtype_float)
+exp2_real = texp2
+exp2_vector = texp2
+exp2_rowvector = texp2
+exp2_matrix = texp2
+exp2_array = texp2
+
 
 # R log(T x)
 # natural logarithm of x
@@ -817,11 +828,11 @@ atanh_array = tatanh
 # R logit(T x)
 # log odds, or logit, function applied to x
 from jax.scipy.special import logit #Shashi modification
-logit_int = _XXX_TODO_XXX_("logit")
+logit_int = logit
 logit_real = logit                  #Shashi modification
 logit_vector = logit                  #Shashi modification
-logit_rowvector = _XXX_TODO_XXX_("logit")
-logit_matrix = _XXX_TODO_XXX_("logit")
+logit_rowvector = logit
+logit_matrix = logit
 logit_array = logit   
 
 # R inv_logit(T x)
@@ -850,21 +861,23 @@ inv_cloglog_array = _XXX_TODO_XXX_("inv_cloglog")
 
 # R erf(T x)
 # error function, also known as the Gauss error function, of x
-erf_int = _XXX_TODO_XXX_("erf")
-erf_real = _XXX_TODO_XXX_("erf")
-erf_vector = _XXX_TODO_XXX_("erf")
-erf_rowvector = _XXX_TODO_XXX_("erf")
-erf_matrix = _XXX_TODO_XXX_("erf")
-erf_array = _XXX_TODO_XXX_("erf")
+from jax.scipy.special import erf as terf
+erf_int = terf
+erf_real = terf
+erf_vector = terf
+erf_rowvector = terf
+erf_matrix = terf
+erf_array = terf
 
 # R erfc(T x)
 # complementary error function of x
-erfc_int = _XXX_TODO_XXX_("erfc")
-erfc_real = _XXX_TODO_XXX_("erfc")
-erfc_vector = _XXX_TODO_XXX_("erfc")
-erfc_rowvector = _XXX_TODO_XXX_("erfc")
-erfc_matrix = _XXX_TODO_XXX_("erfc")
-erfc_array = _XXX_TODO_XXX_("erfc")
+from jax.scipy.special import erfc as terfc
+erfc_int = terfc
+erfc_real = terfc
+erfc_vector = terfc
+erfc_rowvector = terfc
+erfc_matrix = terfc
+erfc_array = terfc
 
 # R Phi(T x)
 # standard normal cumulative distribution function of x
@@ -1055,12 +1068,13 @@ lgamma_array = lgamma
 
 # R digamma(T x)
 # digamma function applied to x. The digamma function is the derivative of the natural logarithm of the Gamma function. The function is defined for positive numbers and non-integral negative numbers
-digamma_int = _XXX_TODO_XXX_("digamma")
-digamma_real = _XXX_TODO_XXX_("digamma")
-digamma_vector = _XXX_TODO_XXX_("digamma")
-digamma_rowvector = _XXX_TODO_XXX_("digamma")
-digamma_matrix = _XXX_TODO_XXX_("digamma")
-digamma_array = _XXX_TODO_XXX_("digamma")
+jax.lax import digamma
+digamma_int = digamma
+digamma_real = digamma
+digamma_vector = digamma
+digamma_rowvector = digamma
+digamma_matrix = digamma
+digamma_array = digamma
 
 # R trigamma(T x)
 # trigamma function applied to x. The trigamma function is the second derivative of the natural logarithm of the Gamma function
