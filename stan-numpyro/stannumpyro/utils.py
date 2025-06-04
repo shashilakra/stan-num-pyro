@@ -1,16 +1,12 @@
 import json
 import importlib.util
-
 import jax
 import jax.numpy as jnp
 import jax.scipy as jsp
-
 import numpyro
 import numpyro.distributions as dist
 
-
 from numpyro.infer.util import initialize_model
-
 
 
 def import_model_methods(file_path):
@@ -75,17 +71,3 @@ def load_stan_model(model_path, data_path, init_key):
         return postprocess_fn(**data)(position)
 
     return logdensity_fn, init_params, constrain_fn
-
-
-def initialise_mcmc_chains(init_params, num_chains, init_key):
-
-    sample_names = list(init_params.z.keys())
-    sample_shapes = [init_params.z[name].shape for name in sample_names]
-    dim = sum([int(jnp.prod(jnp.array(shape))) for shape in sample_shapes])
-
-    initial_params = {
-        name: jax.random.uniform(init_key, (num_chains,) + shape, minval=-1.0, maxval=1.0)
-        for name, shape in zip(sample_names, sample_shapes)
-    }
-
-    return initial_params, sample_names, sample_shapes, dim
